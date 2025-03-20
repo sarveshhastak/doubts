@@ -6,6 +6,7 @@ const { protectedRoute } = require("./middleware/auth.middleware")
 require("dotenv").config()  //to access PORT number from .env
 const path = require("path")
 const app = express() //to start server
+app.use(express.static("dist"))
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({ origin: true, credentials: true }))
