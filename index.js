@@ -4,6 +4,7 @@ const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const { protectedRoute } = require("./middleware/auth.middleware")
 require("dotenv").config()  //to access PORT number from .env
+const path = require("path")
 const app = express() //to start server
 app.use(express.json())
 app.use(cookieParser())
@@ -12,7 +13,8 @@ app.use("/api/auth", require("./routes/auth.route"))
 app.use("/api/todo", require("./routes/todo.route"))
 app.use("/api/blog", protectedRoute, require("./routes/blog.route"))
 app.use("*", (req, res) => {
-    res.status(404).json({ message: "Resource Not Found !" })
+    res.sendFile(path.join(__dirname, "dist", "index.html"))
+    // res.status(404).json({ message: "Resource Not Found !" })
 })
 mongoose.connect(process.env.MONGO_URL) //to connect to database
 mongoose.connection.once("open", () => {

@@ -1,0 +1,1 @@
+import{r as a,j as t}from"./index-D80hwQms.js";const s=()=>{const[r,n]=a.useState();return a.useEffect(()=>{let e;return r&&(e=setTimeout(()=>{console.log("api called")},2e3)),()=>{clearTimeout(e)}},[r]),t.jsx(t.Fragment,{children:t.jsx("input",{onChange:e=>n(e.target.value),type:"text",placeholder:"Search anything"})})};export{s as default};
